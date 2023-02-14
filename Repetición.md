@@ -113,3 +113,57 @@ while True:
         break
 
 ```
+
+### Descripción del metodo llenar unidades
+- Metodo para llenar la informacion de unidades
+```py
+    
+    def llenarUnidades(self):
+        #Atrubutos de la entidad unidades
+        ###Unidades(matricula, tipo_unidad) CVE_EMP
+        
+        #Primero nos ingresan la matricula y el tipo, los pedimos primero porque los ingresan directamente
+        print()
+        matricula=input('Ingresa la matricula ')
+        tipo=input('Ingresa el tipo de unidad ')
+```
+- Necesitamos la clave de empleados por eso es necesario abrir el archivo de empleados en modo lectura y utilizamos el metodo *readlines* para guardar cada renglon del archivo empleados en un elemento de una lista 
+
+```py
+['E001 SAUL RIOS 34 5342342 133\n', 'E002 JUAN RIOS 34 5342342 132\n', 'E003 Maria Rios 36 894383 233\n']
+```
+Y el for se utiliza para imprimir cada elemento de esa lista
+```py
+        archivo=open('Empleados.txt','r')
+        registros=archivo.readlines()
+        archivo.close()
+        cont=1
+        print('Elige al empleado correspondiente: ')
+        for i in registros:
+            print(f'{cont}) {i}')
+            cont+=1
+```
+Despues de mostrar el menu le pedimos que ingrese el numero correspondiente al empleado
+```py
+        empleado=int(input())
+```
+La variable registros contiene la lista de todos los empleados y nosotros solo necesitamos el empleado que seleccionó en el menu
+Ya que la los indices de las listas inician en *0* y nuestro menu inicia en *1* debemos restarle 1 al momento de acceder al elemento de la lista correspondiente.
+```py
+        registro_seleccionado=registros[empleado-1]
+```
+Ya que tenemos seleccionado el registro debemos tomar unicamente la clave, para eso utilizamos el metodo [find](https://www.freecodecamp.org/espanol/news/tutorial-de-metodos-de-cadena-de-texto-en-python-como-usar-find-y-replace-en-python/#:~:text=El%20m%C3%A9todo%20find%20%28%29%20busca%20a%20trav%C3%A9s%20de,Si%20this_pattern%20no%20est%C3%A1%20en%20this_string%2C%20retorna%20-1.), debido a que la el elemento guardado en la variable *registro seleccionado* tiene el siguiente formato 
+```py
+'E001 SAUL RIOS 34 5342342 133\n'
+```
+Necesitamos utilizar find para que encuentre el primer espacio en blanco y apartir de ahí cortar la cadena, y eso se logra con la siguiente instruccion.
+```py
+        clave=registro_seleccionado[0:registro_seleccionado.find(' ')]
+```
+Y por se abre el archivo de unidades y se le agrega el nuevo registro
+```py
+        archivo=open('Unidades.txt','a')
+        registro=matricula+' '+tipo+' '+clave+'\n'
+        archivo.write(registro)
+        archivo.close()
+```
