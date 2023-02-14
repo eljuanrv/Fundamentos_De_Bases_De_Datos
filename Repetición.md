@@ -160,7 +160,7 @@ Necesitamos utilizar find para que encuentre el primer espacio en blanco y apart
 ```py
         clave=registro_seleccionado[0:registro_seleccionado.find(' ')]
 ```
-Y por se abre el archivo de unidades y se le agrega el nuevo registro
+Y por ultimo se abre el archivo de unidades y se le agrega el nuevo registro
 ```py
         archivo=open('Unidades.txt','a')
         registro=matricula+' '+tipo+' '+clave+'\n'
