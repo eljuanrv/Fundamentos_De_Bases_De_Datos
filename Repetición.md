@@ -127,7 +127,7 @@ while True:
         matricula=input('Ingresa la matricula ')
         tipo=input('Ingresa el tipo de unidad ')
 ```
-- Necesitamos la clave de empleados por eso es necesario abrir el archivo de empleados en modo lectura y utilizamos el metodo *readlines* para guardar cada renglon del archivo empleados en un elemento de una lista 
+- Necesitamos la clave de empleados por eso es necesario abrir el archivo de empleados en modo lectura y utilizamos el metodo **readlines** para guardar cada renglon del archivo empleados en un elemento de una lista como la siguiente
 
 ```py
 ['E001 SAUL RIOS 34 5342342 133\n', 'E002 JUAN RIOS 34 5342342 132\n', 'E003 Maria Rios 36 894383 233\n']
@@ -148,7 +148,7 @@ Despues de mostrar el menu le pedimos que ingrese el numero correspondiente al e
         empleado=int(input())
 ```
 La variable registros contiene la lista de todos los empleados y nosotros solo necesitamos el empleado que seleccionó en el menu
-Ya que la los indices de las listas inician en *0* y nuestro menu inicia en *1* debemos restarle 1 al momento de acceder al elemento de la lista correspondiente.
+Ya que los indices de las listas inician en **0** y nuestro menu inicia en **1** debemos restarle 1 al momento de acceder al elemento de la lista correspondiente.
 ```py
         registro_seleccionado=registros[empleado-1]
 ```
@@ -156,7 +156,7 @@ Ya que tenemos seleccionado el registro debemos tomar unicamente la clave, para 
 ```py
 'E001 SAUL RIOS 34 5342342 133\n'
 ```
-Necesitamos utilizar find para que encuentre el primer espacio en blanco y apartir de ahí cortar la cadena, y eso se logra con la siguiente instruccion.
+Necesitamos utilizar find para que encuentre el primer espacio en blanco y apartir de ahí [cortar](https://phytoneando.top/python-cortar-cadenas/#:~:text=El%20troceado%20de%20cadenas%20en%20Python%20sigue%20siempre,rango%20de%20caracteres%20utilizando%20la%20sintaxis%20de%20corte.) la cadena, y eso se logra con la siguiente instruccion.
 ```py
         clave=registro_seleccionado[0:registro_seleccionado.find(' ')]
 ```
